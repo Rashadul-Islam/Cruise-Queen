@@ -216,9 +216,9 @@
             //convert function for parsing string to integer
             const firstClassTicketQuantity = convert('first-class-count');
             const economyClassTicketQuantity = convert('economy-class-count');
-            
+
             //calculating subtotal according to  given price
-            const subTotal = firstClassTicketQuantity*150 + economyClassTicketQuantity*100;
+            const subTotal = firstClassTicketQuantity * 150 + economyClassTicketQuantity * 100;
             document.getElementById('sub-total').innerText = '$' + subTotal;
 
             //calculate 10% tax on subtotal amount and rounding up to integer
@@ -292,7 +292,7 @@
         }
 
         //function for alert
-        function paymentAlert(){
+        function paymentAlert() {
             alert('Software under Construction ...!!');
         }
     </script>
