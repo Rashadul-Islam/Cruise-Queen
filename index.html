@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div id="booking-text" class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p>One of the best cruise ship in the world that fell you comfort and luxury.Central cooling system,vip
+                rooms,meeting rooms,park,gym,shopping mall,restaurants always brings home like environment.It's like a
+                piece of town floating on the ocean that provide you safe and luxurious journey.</p>
+        </div>
+
+
+        <div id="booking-form" class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Floating From</label>
+                <input id="floating-from-input" class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Floating To</label>
+                <input id="floating-to-input" class="inp-style" type="text" name=""
+                    placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                        <input id="departure-input" class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input id='return-input' class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="first-class-count" class="inp-style inp-width" type="text" name="" value="0">
+                </div>
+                <div class="plus-minus-btn">
+                    <button onclick="ticketCount('first-class-count',true)" <i class="fas fa-plus"></i></button>
+                    <button onclick="ticketCount('first-class-count',false)" <i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input id="economy-class-count" class="inp-style inp-width" type="text" name="" value="0">
+                </div>
+                <div class="plus-minus-btn">
+                    <button onclick="ticketCount('economy-class-count',true)" <i class="fas fa-plus"></i></button>
+                    <button onclick="ticketCount('economy-class-count',false)" <i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="sub-total">$0</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="tax-amount">$0</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="total-amount">$0</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="BookNow()" class="btn-style">Book Now</button>
+        </div>
+
+        <!-- my creation after clicking book now button -->
+        <div id="click-book-now" class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div>
+                <h2 class="label" for="">Booking Information</h2>
+
+                <!-- table for booking information -->
+                <table class="booking-info">
+                    <tr>
+                        <td>Floating From:</td>
+                        <td id="floating-from-output"></td>
+                    </tr>
+                    <tr>
+                        <td>Floating To:</td>
+                        <td id="floating-to-output"></td>
+                    </tr>
+                    <tr>
+                        <td>Departure Date:</td>
+                        <td id="departure-output"></td>
+                    </tr>
+                    <tr>
+                        <td>Return Date:</td>
+                        <td id="return-output"></td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div>
+                <h2 class="label" for="">Price Information</h2>
+
+                <!-- table for pricing information -->
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Quantity</th>
+                        <th>Per Ticket Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    <tr>
+                        <td>First Class</td>
+                        <td id="first-class-ticket-quantity"></td>
+                        <td>$150</td>
+                        <td id="first-class-subtotal"></td>
+                    </tr>
+                    <tr>
+                        <td>Economy</td>
+                        <td id="economy-class-ticket-quantity"></td>
+                        <td>$100</td>
+                        <td id="economy-class-subtotal"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Tax Amount</td>
+                        <td id='after-click-tax'>Tax Amount</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Total Amount</td>
+                        <td id="after-click-total"></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h2 class="label" for="">Select Payment Option</h2>
+
+                <!-- form for selecting payment option -->
+                <form class="payment-form">
+                    <label for="payment">Choose an option: </label>
+                    <select class="payment-area" id="payment" name="payment">
+                        <option value="card">Card Payment</option>
+                        <option value="Bkash">BKash Payment</option>
+                    </select>
+                </form>
+
+            </div>
+
+            <button onclick="paymentAlert()" class="btn-style">Pay Now</button>
+        </div>
+    </main>
+
+    <script>
+
+        //function for ticket increase and decrease
+        function ticketCount(ticket, isIncrease) {
+            const ticketInput = document.getElementById(ticket);
+
+            //convert string value to integer
+            const ticketCount = parseInt(ticketInput.value);
+            let ticketNewCount = ticketCount;
+            if (isIncrease == true) {
+                ticketNewCount = ticketCount + 1;
+            }
+
+            if (isIncrease == false && ticketCount > 0) {
+                ticketNewCount = ticketCount - 1;
+            }
+            ticketInput.value = ticketNewCount;
+            calculateTotal();
+        }
+
+        // calculate total
+        function calculateTotal() {
+
+            //convert function for parsing string to integer
+            const firstClassTicketQuantity = convert('first-class-count');
+            const economyClassTicketQuantity = convert('economy-class-count');
+            
+            //calculating subtotal according to  given price
+            const subTotal = firstClassTicketQuantity*150 + economyClassTicketQuantity*100;
+            document.getElementById('sub-total').innerText = '$' + subTotal;
+
+            //calculate 10% tax on subtotal amount and rounding up to integer
+            const taxAmount = Math.round(subTotal * .10);
+            document.getElementById('tax-amount').innerText = '$' + taxAmount;
+            const totalAmount = subTotal + taxAmount;
+            document.getElementById('total-amount').innerText = '$' + totalAmount;
+        }
+
+        //function for parsing id value string to integer
+        function convert(id) {
+            const fetchData = document.getElementById(id).value;
+            return parseInt(fetchData);
+        }
+
+        //function for clicking book now button
+        function BookNow() {
+
+            //hiding booking form
+            document.getElementById('booking-form').style.display = 'none';
+
+            //appearing payment window
+            document.getElementById('click-book-now').style.display = "block";
+
+            //getting and assign first class ticket quantity
+            const firstClassTicketQuantity = convert('first-class-count');
+            document.getElementById('first-class-ticket-quantity').innerText = firstClassTicketQuantity;
+
+            //first class tickets cost
+            const firstClassSubtotal = firstClassTicketQuantity * 150;
+
+            //assign value to first-class-subtotal
+            document.getElementById('first-class-subtotal').innerText = '$' + firstClassSubtotal;
+
+            //getting and assign economy ticket quantity
+            const economyClassTicketQuantity = convert('economy-class-count');
+            document.getElementById('economy-class-ticket-quantity').innerText = economyClassTicketQuantity;
+
+            //economy tickets cost
+            const economyClassTotal = economyClassTicketQuantity * 100;
+            document.getElementById('economy-class-subtotal').innerText = '$' + economyClassTotal;
+
+            //calculate total amount of tickets price
+            const sumOfSubtotal = firstClassSubtotal + economyClassTotal;
+
+            //calculate tax amount based on 10%
+            const taxAmount = Math.round(sumOfSubtotal * .10);
+            document.getElementById('after-click-tax').innerText = '$' + taxAmount;
+
+            //calculate and assign total amount including tax
+            document.getElementById('after-click-total').innerText = '$' + (sumOfSubtotal + taxAmount);
+
+            //getting and assign the value of floating from
+            bookingInfo('floating-from-input', 'floating-from-output');
+
+            //getting and assign the value of floating to
+            bookingInfo('floating-to-input', 'floating-to-output');
+
+            //getting and assign of departure date
+            bookingInfo('departure-input', 'departure-output');
+
+            //getting and assign of return date
+            bookingInfo('return-input', 'return-output');
+
+        }
+
+        //function for getting and assign the value of id
+        function bookingInfo(id1, id2) {
+            const input = document.getElementById(id1).value;
+            document.getElementById(id2).innerText = ' ' + input;
+        }
+
+        //function for alert
+        function paymentAlert(){
+            alert('Software under Construction ...!!');
+        }
+    </script>
+
+
+    <!--Thank You-->
+</body>
+
+</html>
